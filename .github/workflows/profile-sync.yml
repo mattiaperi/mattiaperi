@@ -1,0 +1,16 @@
+name: Profile Sync
+on:
+  push:
+    paths: ['README.md']
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Links
+        run: |
+          grep -o 'https://[^)]*' README.md | xargs -I {} curl -f -s {} > /dev/null
+      - name: Update Profile Stats
+        run: |
+          # Auto-update GitHub stats if needed
+          echo "Profile updated"

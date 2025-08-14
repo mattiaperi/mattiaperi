@@ -1,0 +1,5 @@
+
+# Common files and directories to ignore
+_tmp/
+.DS_Store
+.vscode/
